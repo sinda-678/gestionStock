@@ -44,7 +44,7 @@ public class CompagnyDto {
     private List<UtilisateurDto> utilisateur;
 
 	
-	public CompagnyDto fromEntity(Company company) {
+	public static CompagnyDto fromEntity(Company company) {
 		if(company == null) {
 			return null;
 		}
@@ -62,7 +62,7 @@ public class CompagnyDto {
 				.build();
 	}
 	
-    public Company  toEntity( CompagnyDto  compagnyDto) {
+    public static Company  toEntity( CompagnyDto  compagnyDto) {
     	
     	if(compagnyDto == null) {
     		return null;

@@ -14,7 +14,7 @@ import com.stockManager.sinda.exception.ErrorsCodes;
 import com.stockManager.sinda.exception.InvalidEntityException;
 import com.stockManager.sinda.interfaces.ArticleRepository;
 import com.stockManager.sinda.models.Article;
-import com.stockManager.sinda.models.Categories;
+
 import com.stockManager.sinda.service.ArticleService;
 
 import com.stockManager.sinda.validator.ArticleValidator;

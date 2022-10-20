@@ -42,7 +42,7 @@ public class UtilisateurDto {
    @JsonIgnore
     private List<RoleDto> roles;
 
-   public UtilisateurDto fromEntity(Utilisateur utilisateur) {
+   public static UtilisateurDto fromEntity(Utilisateur utilisateur) {
 	   if(utilisateur == null) {
 		   return null;
 	   }
@@ -57,7 +57,7 @@ public class UtilisateurDto {
 			   .build();
    }
 	
-   public Utilisateur toEntity(UtilisateurDto utilisateurDto) {
+   public static Utilisateur toEntity(UtilisateurDto utilisateurDto) {
 	   
 	   if(utilisateurDto == null) {
 		   return null;

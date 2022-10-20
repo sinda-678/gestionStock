@@ -2,16 +2,21 @@ package com.stockManager.sinda.service;
 
 import java.util.List;
 
-import com.stockManager.sinda.models.Categories;
+import com.stockManager.sinda.dto.CategoriesDto;
+
+
 
 public interface CategoriesServices {
 	
-	Categories create(Categories cat);
+	CategoriesDto save(CategoriesDto catagorieDto);
 	
-	Categories findOneById(Long id);
 	
-	List<Categories> findAll();
+	CategoriesDto findByCodeCategory(String id);
 	
-	String delete(Long id);  
+	List<CategoriesDto > findAll();
+	
+	void delete(Long id);
+
+	CategoriesDto findById(Long id);  
 
 }

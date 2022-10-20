@@ -21,10 +21,6 @@ public class ClientDto {
 	private String prenom;
 	
 	
-	
-	
-	 
-	
 	private String mail;
 	    
 	
@@ -38,7 +34,7 @@ public class ClientDto {
 	@JsonIgnore
 	private List<CmdClientDto> cmdClients;
 
-	public ClientDto fromEntity(Client client) {
+	public static ClientDto fromEntity(Client client) {
 		if(client == null) {
 			return null;
 		}
@@ -52,7 +48,7 @@ public class ClientDto {
 				.numero(client.getNumero())
 				.build();
 	}
-		  public Client toEntity(  ClientDto  clientDto) {
+		  public static Client toEntity(  ClientDto  clientDto) {
 			if(clientDto == null) {
 				return null;
 			}
