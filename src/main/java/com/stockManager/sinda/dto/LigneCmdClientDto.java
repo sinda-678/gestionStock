@@ -2,6 +2,7 @@ package com.stockManager.sinda.dto;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stockManager.sinda.models.LigneCmdClient;
 
 import lombok.Builder;
@@ -15,7 +16,7 @@ public class LigneCmdClientDto {
 	
 	private ArticleDto article;
 	
-
+	@JsonIgnore
     private CmdClientDto cmdClient;
 	
 	
@@ -35,7 +36,7 @@ public LigneCmdClientDto fromEntity(LigneCmdClient ligneCmdClient) {
 			.build();
 }
 	
-public LigneCmdClient toEntity(LigneCmdClientDto ligneCmdClientDto) {
+public static LigneCmdClient toEntity(LigneCmdClientDto ligneCmdClientDto) {
 	if(ligneCmdClientDto == null) {
 		return null;
 	}

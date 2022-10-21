@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.stockManager.sinda.dto.LigneCmdFournisseurDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,4 +43,9 @@ public class LigneCmdFournisseur  {
 	
 	@Column(name="quantite")
     private BigDecimal quantity;
+
+	public static LigneCmdFournisseur toEntity(LigneCmdFournisseurDto ligneCmdCl) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

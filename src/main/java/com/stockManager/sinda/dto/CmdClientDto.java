@@ -23,7 +23,6 @@ public class CmdClientDto {
 
 	private ClientDto client;
 	
-	@JsonIgnore
 	private List<LigneCmdClientDto> lignesCmdClients;
 	
 	
@@ -39,7 +38,7 @@ public class CmdClientDto {
 				.build();
 	}
 
-	public CmdClient toEntity(CmdClientDto cmdClientDto) {
+	public static CmdClient toEntity(CmdClientDto cmdClientDto) {
 		if(cmdClientDto == null) {
 			return null;
 		}
@@ -50,6 +49,11 @@ public class CmdClientDto {
 		 cmdclient.setDateCommande(cmdClientDto.getDateCommande());
 		 
 		 return  cmdclient;
+	}
+
+	public static CmdClientDto fromEntity(CmdClient saveCmdCl) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.stockManager.sinda.serviceImpl;
+package com.stockManager.sinda.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +16,6 @@ import com.stockManager.sinda.interfaces.CompanyRepository;
 import com.stockManager.sinda.models.Article;
 import com.stockManager.sinda.models.Company;
 import com.stockManager.sinda.service.CompanyService;
-import com.stockManager.sinda.service.impl.ArticleServiceImpl;
 import com.stockManager.sinda.validator.CompagnyValidator;
 
 import lombok.extern.slf4j.Slf4j;

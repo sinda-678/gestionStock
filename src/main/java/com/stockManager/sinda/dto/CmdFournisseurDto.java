@@ -22,10 +22,10 @@ public class CmdFournisseurDto {
    
     private FournisseurDto fournisseur;
     
-   @JsonIgnore
+  
     private List<LigneCmdFournisseurDto> lignesCmdFournisseurs;
 
-   public CmdFournisseurDto fromEntity( CmdFournisseur  cmdFournisseur) {
+   public static CmdFournisseurDto fromEntity( CmdFournisseur  cmdFournisseur) {
 	   if(cmdFournisseur == null) {
 		   return null;
 	   }
@@ -37,7 +37,7 @@ public class CmdFournisseurDto {
 			   .build();
    }
    
-   public  CmdFournisseur  toEntity( CmdFournisseurDto  cmdFournisseurDto) {
+   public static  CmdFournisseur  toEntity( CmdFournisseurDto  cmdFournisseurDto) {
 	   if( cmdFournisseurDto == null) {
 		   return null;
 	   }
