@@ -1,6 +1,7 @@
 package com.stockManager.sinda.dto;
 
 import java.time.Instant;
+import java.util.List;
 
 import com.stockManager.sinda.models.Vente;
 
@@ -23,8 +24,10 @@ public class VenteDto {
 	private Instant dateVente;
 	
     private String commentaire;
+    
+     private List<LigneVenteDto> ligneVente;
 	
-    public VenteDto fromEntity(Vente vente) {
+    public static VenteDto fromEntity(Vente vente) {
     	if(vente == null) {
     		return null;
     	}
@@ -38,7 +41,7 @@ public class VenteDto {
     	
     }
     
-    public Vente toEntity(VenteDto venteDto) {
+    public static Vente toEntity(VenteDto venteDto) {
     	if(venteDto== null) {
     		return null;
     	}

@@ -1,13 +1,17 @@
 package com.stockManager.sinda.models;
 
 import java.time.Instant;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,5 +42,4 @@ public class Vente {
 	@Column(name="commentaires")
     private String commentaire;
 	
-
 }

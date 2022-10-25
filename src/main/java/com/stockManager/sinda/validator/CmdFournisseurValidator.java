@@ -13,6 +13,6 @@ public class CmdFournisseurValidator {
 public static List<String> validate(CmdFournisseurDto cmdFournisseurDto){
 		
 	List<String> errors =new ArrayList();
-	return null;
+	return errors;
 }
 }

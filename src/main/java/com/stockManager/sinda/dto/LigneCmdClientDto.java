@@ -16,7 +16,7 @@ public class LigneCmdClientDto {
 	
 	private ArticleDto article;
 	
-	@JsonIgnore
+	
     private CmdClientDto cmdClient;
 	
 	

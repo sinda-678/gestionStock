@@ -11,7 +11,6 @@ public interface CmdFournisseurService {
 		
 	 CmdFournisseurDto findById(Long id);
 	
-	 CmdFournisseurDto findByCodeCmdFournisseur(String codeCmdFournisseur);
 	
 	List< CmdFournisseurDto> findAll();
 	

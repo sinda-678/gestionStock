@@ -52,19 +52,21 @@ public class CmdClientServiceImpl implements CmdClientService {
 	
 	@Override
 	public CmdClientDto save(CmdClientDto Dto) {
-		// TODO Auto-generated method stub
+		 
 		List<String> errors = CmdClientValidator.validate(Dto);
+		//on verifie si on n'a des erreus de validations
 		if(!errors.isEmpty()) {
 			log.error("commande client n'est pas valide");
 			throw new InvalidEntityException("Le client n'est pas valide",ErrorsCodes.CMD_CIENT_NOT_VALID,errors);
 		}
+		//on verifie si on n'a bien le client dans notre BBD
 		Optional<Client> client = clientRepository.findById(Dto.getClient().getId());
 		if(client.isEmpty()) {
 			log.warn("client with ID {} was not found in the BD",Dto.getClient().getId());
 			throw new EntityNotFoundException("aucun client avec l'ID" +Dto.getClient().getId() + "n'a eté trouvé dans la BD");
 		}
 		List<String> articleErrors =new ArrayList<>();
-		
+		//si on n'a les commandes client on verifie si chaque ligne de cmdClient existe dans notre BBD
 		if(Dto.getLignesCmdClients() != null) {
 			Dto.getLignesCmdClients().forEach(ligneCmdCl->{
 				
@@ -79,15 +81,19 @@ public class CmdClientServiceImpl implements CmdClientService {
 				}
 			});
 		}
+		//si un article n'exite pas on leve une exception
 			if(!articleErrors.isEmpty()) {
 				log.warn("");
 				throw new  InvalidEntityException("l'article n'existe pas dans la base de donnée",ErrorsCodes.ARTICLE_NOT_FOUND,articleErrors);
 				
 			
 		}
+			//si tout marche on enreigistre la commande client 
 		CmdClient saveCmdCl =  cmdClientRepository.save(CmdClientDto.toEntity(Dto));
+		
 		if(Dto.getLignesCmdClients() != null) {
 		Dto.getLignesCmdClients().forEach(ligneCmdCl->{
+			//pour chaque ligne de cmdclient on fait le Mapping du dto vers l'entité 
 			LigneCmdClient ligneCmdClient =LigneCmdClientDto.toEntity(ligneCmdCl);
 			ligneCmdClient .setCmdClient(saveCmdCl);
 			 ligneCmdClientRepository.save(ligneCmdClient);
@@ -114,7 +120,7 @@ public class CmdClientServiceImpl implements CmdClientService {
 			log.error("commande client code is null");
 		}
 		
-		return cmdClientRepository.findByCodeCmdClient( codeCmdClient)
+		return cmdClientRepository.findByCodeCmdClient(codeCmdClient)
 				.map(CmdClientDto::fromEntity)
 				.orElseThrow(()-> new EntityNotFoundException("Aucun code du client = " + codeCmdClient +" n'est valide dans la BD",ErrorsCodes.CMD_CLIENT__NOT_FOUND));
 	

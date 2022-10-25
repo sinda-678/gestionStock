@@ -33,7 +33,7 @@ public class LigneVenteDto {
 				.quantity( ligneVente.getQuantity())
 				.build();
 	}
-	public LigneVente toEntity(LigneVenteDto ligneVenteDto) {
+	public static LigneVente toEntity(LigneVenteDto ligneVenteDto) {
 		if( ligneVenteDto == null) {
 			return null;
 		}
