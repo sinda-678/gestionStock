@@ -37,6 +37,16 @@ public class CmdClient {
 	@Column(name="date_commande")
 	private Instant dateCommande;
 	
+
+	@Column(name="etatCommande")
+    private EtatCommande etatCommande;
+	
+
+	@Column(name=" idCompany")
+    private Long idCompany;
+	
+	    
+	
 	@ManyToOne
 	@JoinColumn(name="client_id")
 	private Client client;

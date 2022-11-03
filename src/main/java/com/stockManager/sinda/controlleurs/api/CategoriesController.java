@@ -2,6 +2,7 @@ package com.stockManager.sinda.controlleurs.api;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stockManager.sinda.dto.CategoriesDto;
@@ -11,6 +12,7 @@ public class CategoriesController implements CategoriesApi{
 
 private CategoriesServices categoriesServices;
 
+@Autowired
 public CategoriesController(CategoriesServices categoriesServices) {
 	this.categoriesServices= categoriesServices;
 }

@@ -36,7 +36,7 @@ public static List<String> validate(CmdClientDto cmdClientDto){
 		
 		
 
-		if(cmdClientDto.getClient()==null) {
+		if(cmdClientDto.getClient()==null|| cmdClientDto.getId() == null) {
 			errors.add("veuillez renseigner les informations  du client");
 		}
 		return errors;

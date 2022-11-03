@@ -10,9 +10,10 @@ import com.stockManager.sinda.service.ClientService;
 
 @RestController
 public class ClientController implements ClientApi{
+	
 private ClientService clientService;
 
-
+@Autowired
 public  ClientController( ClientService clientService) {
 	this.clientService= clientService;
 }

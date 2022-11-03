@@ -2,6 +2,7 @@ package com.stockManager.sinda.controlleurs.api;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stockManager.sinda.dto.UtilisateurDto;
@@ -11,6 +12,8 @@ import com.stockManager.sinda.service.UtilisateurService;
 public class UtilisateurController implements UtilisateurApi {
  private UtilisateurService utilsateurService;
  
+ 
+ @Autowired
  public UtilisateurController(UtilisateurService utilsateurService) {
 	 this.utilsateurService = utilsateurService;
  }

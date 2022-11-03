@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Configuration;
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.REST;
+import com.flickr4java.flickr.RequestContext;
 import com.flickr4java.flickr.auth.Auth;
+import com.flickr4java.flickr.auth.Permission;
 import com.github.scribejava.apis.FlickrApi;
 import com.github.scribejava.apis.FlickrApi.FlickrPerm;
 import com.github.scribejava.core.builder.ServiceBuilder;
@@ -19,7 +21,7 @@ import com.github.scribejava.core.model.OAuth1AccessToken;
 import com.github.scribejava.core.model.OAuth1RequestToken;
 import com.github.scribejava.core.oauth.OAuth10aService;
 
-//@Configuration
+@Configuration
 public class FlickrConfiguration{
 	
     @Value("${flickr.apiKey}")
@@ -27,8 +29,15 @@ public class FlickrConfiguration{
 
     @Value("${flickr.apiSecret}")
     private String apiSecret;
+    
 
-    @Bean
+    @Value("${flickr.appiKey}")
+    private String appiKey;
+
+    @Value("${flickr.appiSecret}")
+    private String appiSecret;
+    
+   /* @Bean
     public Flickr getFlickr() throws IOException, ExecutionException, InterruptedException, FlickrException {
         Flickr flickr = new Flickr(apiKey, apiSecret, new REST());
 
@@ -53,5 +62,21 @@ public class FlickrConfiguration{
         System.out.println(auth.getTokenSecret());
         
         return flickr;
+    }*/
+    
+    
+    @Bean
+    public Flickr getFlickr() {
+    	 Flickr flickr = new Flickr(apiKey,apiSecret,new REST());
+    	Auth auth= new Auth();
+    	auth.setPermission(Permission.DELETE);
+    	auth.setToken(apiKey);
+    	auth.setTokenSecret(apiSecret);
+    	RequestContext requestContext =RequestContext.getRequestContext();
+    	requestContext.setAuth(auth);
+    	flickr.setAuth(auth);
+    	
+    	return flickr;
     }
+    
 }

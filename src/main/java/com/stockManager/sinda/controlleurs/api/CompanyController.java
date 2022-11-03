@@ -2,6 +2,8 @@ package com.stockManager.sinda.controlleurs.api;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.stockManager.sinda.dto.CompagnyDto;
 import com.stockManager.sinda.service.CompanyService;
 
@@ -9,6 +11,8 @@ public class CompanyController implements CompanyApi {
 
 	private CompanyService companyService;
 	
+	
+	@Autowired
 	public CompanyController( CompanyService companyService) {
 		this.companyService = companyService;
 	}

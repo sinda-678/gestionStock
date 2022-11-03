@@ -15,6 +15,7 @@ import com.stockManager.sinda.dto.LigneCmdClientDto;
 import com.stockManager.sinda.exception.EntityNotFoundException;
 import com.stockManager.sinda.exception.ErrorsCodes;
 import com.stockManager.sinda.exception.InvalidEntityException;
+import com.stockManager.sinda.exception.InvalidOperationException;
 import com.stockManager.sinda.interfaces.ArticleRepository;
 import com.stockManager.sinda.interfaces.ClientRepository;
 import com.stockManager.sinda.interfaces.CmdClientRepository;
@@ -22,6 +23,7 @@ import com.stockManager.sinda.interfaces.LigneCmdClientRepository;
 import com.stockManager.sinda.models.Article;
 import com.stockManager.sinda.models.Client;
 import com.stockManager.sinda.models.CmdClient;
+import com.stockManager.sinda.models.EtatCommande;
 import com.stockManager.sinda.models.LigneCmdClient;
 import com.stockManager.sinda.service.CmdClientService;
 import com.stockManager.sinda.validator.CmdClientValidator;
@@ -59,11 +61,14 @@ public class CmdClientServiceImpl implements CmdClientService {
 			log.error("commande client n'est pas valide");
 			throw new InvalidEntityException("Le client n'est pas valide",ErrorsCodes.CMD_CIENT_NOT_VALID,errors);
 		}
+		if(Dto.getId()!=null && Dto.isCommandeLivree()) {
+			throw new InvalidOperationException("impossible de modifier la commande lorsqu'elle livée",ErrorsCodes.CMD_CIENT_NOT_MODIFIABLE);
+		}
 		//on verifie si on n'a bien le client dans notre BBD
 		Optional<Client> client = clientRepository.findById(Dto.getClient().getId());
 		if(client.isEmpty()) {
 			log.warn("client with ID {} was not found in the BD",Dto.getClient().getId());
-			throw new EntityNotFoundException("aucun client avec l'ID" +Dto.getClient().getId() + "n'a eté trouvé dans la BD");
+			throw new EntityNotFoundException("aucun client avec l'ID" +Dto.getClient().getId() + "n'a eté trouvé dans la BD",ErrorsCodes.CLIENT__NOT_FOUND);
 		}
 		List<String> articleErrors =new ArrayList<>();
 		//si on n'a les commandes client on verifie si chaque ligne de cmdClient existe dans notre BBD
@@ -143,5 +148,6 @@ public class CmdClientServiceImpl implements CmdClientService {
 		}
 		 cmdClientRepository.deleteById(id);
 	}
+	
 
 }

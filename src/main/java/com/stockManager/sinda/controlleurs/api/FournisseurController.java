@@ -2,6 +2,7 @@ package com.stockManager.sinda.controlleurs.api;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stockManager.sinda.dto.FournisseurDto;
@@ -11,6 +12,8 @@ public class FournisseurController implements FournisseurApi {
 
 	private FournisseurService  fournisseurService ;
 	
+	
+	@Autowired
 	public FournisseurController(FournisseurService  fournisseurService) {
 		this.fournisseurService = fournisseurService;
 	}
